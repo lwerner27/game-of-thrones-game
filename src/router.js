@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import User from "./views/User"
 import League from './views/League'
+import Register from './views/Register'
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export default new Router({
       path: "/league",
       name: "league",
       component: League
+    },
+    {
+      path: "/register",
+      name: "register",
+      component: Register
     }
   ]
 })

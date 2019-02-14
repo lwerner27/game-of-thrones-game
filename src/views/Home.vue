@@ -15,7 +15,7 @@
                                 <a class="waves-effect waves-light btn grey darken-4">LOGIN</a>
                             </div>
                             <div class="col s6">
-                                <a class="waves-effect waves-light btn grey darken-4 right">REGISTER</a>
+                                <a href="/register" class="waves-effect waves-light btn grey darken-4 right">REGISTER</a>
                             </div>
                         </div>
                     </login-form>
