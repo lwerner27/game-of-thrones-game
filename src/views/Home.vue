@@ -3,7 +3,22 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m4 offset-m4">
-                    <login-form />
+                    <login-form>
+                        <div class="row">
+                            <my-text-input v-model="username" inputType="text" inputId="username" labelFor="username">Username</my-text-input>
+                        </div>
+                        <div class="row">
+                            <my-text-input v-model="password" inputType="password" inputId="password" labelFor="password">Password</my-text-input>
+                        </div>
+                        <div class="row">
+                            <div class="col s6">
+                                <a class="waves-effect waves-light btn grey darken-4" v-on:click="testMethod">LOGIN</a>
+                            </div>
+                            <div class="col s6">
+                                <a class="waves-effect waves-light btn grey darken-4 right">REGISTER</a>
+                            </div>
+                        </div>
+                    </login-form>
                 </div>
             </div>
         </div>
@@ -12,16 +27,23 @@
 
 <script>
 import LoginForm from '../components/LoginForm'
+import MyTextInput from '../components/MyTextInput'
 export default {
     data: () => (
         {
             username: "",
-            password: ""
+            password: "",
         }
     ),
     components: {
-        LoginForm
-    }
+        LoginForm,
+        MyTextInput
+    },
+    // methods: {
+    //     testMethod: function() {
+    //         alert(this.username)
+    //     }
+    // }
 }
 </script>
 
