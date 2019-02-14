@@ -4,13 +4,13 @@
             <div class="row">
                 <div class="col s12 m4 offset-m4">
                     <login-form>
-                        <div class="row top-row">
+                        <div class="row input-row top-row">
                             <my-text-input v-model="username" inputType="text" inputId="username" labelFor="username">Username</my-text-input>
                         </div>
-                        <div class="row">
+                        <div class="row input-row">
                             <my-text-input v-model="password" inputType="password" inputId="password" labelFor="password">Password</my-text-input>
                         </div>
-                        <div class="row">
+                        <div class="row input-row">
                             <div class="col s6">
                                 <a class="waves-effect waves-light btn grey darken-4">LOGIN</a>
                             </div>
@@ -55,5 +55,10 @@ export default {
     
     .top-row {
         margin-top: 20px;
+    }
+
+    .input-row {
+        margin-right: 10px;
+        margin-left: 10px;
     }
 </style>
