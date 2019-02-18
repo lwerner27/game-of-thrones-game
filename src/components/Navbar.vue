@@ -1,7 +1,7 @@
 <template>
     <nav class="grey darken-4">
         <div class="nav-wrapper container">
-            <a href="#" class="brand-logo">Game of Thrones Game</a>
+            <a href="#" class="brand-logo">Game of Game of Thrones</a>
             <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="badges.html">Components</a></li>
