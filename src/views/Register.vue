@@ -31,7 +31,7 @@
 
                         <div class="row input-row">
                             <div class="col s6">
-                                <a class="waves-effect waves-light btn grey darken-4">SUBMIT</a>
+                                <a v-on:click="this.onSubmit" class="waves-effect waves-light btn grey darken-4">SUBMIT</a>
                             </div>
                         </div>
 
@@ -56,6 +56,15 @@ export default {
             email: "",
             password: "",
             confirmPassword:""
+        }
+    },
+    methods: {
+        onSubmit: function() {
+            if (this.password === this.confirmPassword) {
+                alert("Your passwords match!")
+            } else {
+                alert("Your passwords do not match.")
+            }
         }
     }
 }
