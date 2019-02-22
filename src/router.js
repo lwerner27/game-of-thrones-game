@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import User from "./views/User"
 import League from './views/League'
 import Register from './views/Register'
+import MakePicks from './views/MakePicks'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ export default new Router({
       path: "/register",
       name: "register",
       component: Register
+    },
+    {
+      path: "/makepicks",
+      name: "makepicks",
+      component: MakePicks
     }
   ]
 })
