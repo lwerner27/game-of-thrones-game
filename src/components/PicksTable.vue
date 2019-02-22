@@ -45,3 +45,10 @@ export default {
     }
 }
 </script>
+
+<style>
+    input, span {
+        z-index: -1;
+    }
+</style>
+

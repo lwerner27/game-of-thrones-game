@@ -1,5 +1,5 @@
 <template>
-    <div class="main-container">
+    <div class="table-container">
         <div class="container">
             <div class="row">
                 <div class="col s12 center">
@@ -24,10 +24,8 @@ export default {
 }
 </script>
 
-
 <style scoped>
-    .main-container {
+    .table-container {
         margin-top: 64px;
     }
 </style>
-
