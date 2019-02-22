@@ -14,10 +14,10 @@
                     <td>{{ pick.name }}</td>
                     <td>
                         <div class="input-field col-s12">
-                            <select v-model="picks[key].status">
-                                <option value="Alive">Alive</option>
-                                <option value="Dead">Dead</option>
-                                <option value="White Walker">White Walker</option>
+                            <select id="select" v-model="picks[key].status">
+                                <option class="option-color" value="Alive">Alive</option>
+                                <option class="option-color" value="Dead">Dead</option>
+                                <option class="option-color" value="White Walker">White Walker</option>
                             </select>
                         </div>
                     </td>
@@ -139,4 +139,3 @@ export default {
     }
 }
 </script>
-
