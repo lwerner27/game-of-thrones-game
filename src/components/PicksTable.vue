@@ -5,27 +5,21 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Alive</th>
-                    <th>White Walker</th>
+                    <th>Select Status</th>
                 </tr>
             </thead>
 
             <tbody>
-                <tr v-for="(pick, index) in userPicks" v-bind:key="index">
+                <tr v-for="(pick, key) in picks" v-bind:key="key">
                     <td>{{ pick.name }}</td>
                     <td>
-                        <label>
-                            <input v-if="pick.alive === true" type="checkbox" class="filled-in" checked="checked" />
-                            <input v-else type="checkbox" class="filled-in" checked="unchecked" />
-                            <span></span>
-                        </label>
-                    </td>
-                    <td>
-                        <label>
-                            <input v-if="pick.whiteWalker === true" type="checkbox" class="filled-in" checked="checked" />
-                            <input v-else type="checkbox" class="filled-in" checked="unchecked" />
-                            <span></span>
-                        </label>
+                        <div class="input-field col-s12">
+                            <select v-model="picks[key].status">
+                                <option value="Alive">Alive</option>
+                                <option value="Dead">Dead</option>
+                                <option value="White Walker">White Walker</option>
+                            </select>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -35,20 +29,114 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 
 export default {
-    computed: {
-        ...mapState([
-            "userPicks"
-        ])
+    data: function () {
+        return {
+            picks: {
+                johnSnow:{
+                    name: "John Snow",
+                    status: "Alive"
+                },
+                sansaStark:{
+                    name: "Sansa Stark",
+                    status: "Alive"
+                },
+                aryaStark:{
+                    name: "Arya Stark",
+                    status: "Alive"
+                },
+                branStark:{
+                    name: "Bran Stark",
+                    status: "Alive"
+                },
+                cerseiLannister:{
+                    name: "Cersei Lannister",
+                    status: "Alive"
+                },
+                jaimeLannister:{
+                    name: "Jaime Lannister",
+                    status: "Alive"
+                },
+                tyrionLannister:{
+                    name: "Tyrion Lannister",
+                    status: "Alive"
+                },
+                daenerysTargaryen:{
+                    name: "Daenerys Targaryen",
+                    status: "Alive"
+                },
+                yaraGrayjoy:{
+                    name: "Yara Greyjoy",
+                    status: "Alive"
+                },
+                melisandre:{
+                    name: "Melisandre",
+                    status: "Alive"
+                },
+                jorahMormont:{
+                    name: "Jorah Mormont",
+                    status: "Alive"
+                },
+                theHound:{
+                    name: "The Hound",
+                    status: "Alive"
+                },
+                theMountain:{
+                    name: "The Mountain",
+                    status: "Alive"
+                },
+                samwellTarley:{
+                    name: "Samwell Tarley",
+                    status: "Alive"
+                },
+                gilly:{
+                    name: "Gilly",
+                    status: "Alive"
+                },
+                lordVarys:{
+                    name: "Lord Varys",
+                    status: "Alive"
+                },
+                brienne:{
+                    name: "Brienne",
+                    status: "Alive"
+                },
+                davosSeaworth:{
+                    name: "Davos Seaworth",
+                    status: "Alive"
+                },
+                bron:{
+                    name: "Bronn",
+                    status: "Alive"
+                },
+                podrickPayne:{
+                    name: "Podrick Payne",
+                    status: "Alive"
+                },
+                tormundGiantsbane:{
+                    name: "Tormund Giantsbane",
+                    status: "Alive"
+                },
+                grayWorm:{
+                    name: "Gray Worm",
+                    status: "Alive"
+                },
+                gendry:{
+                    name: "Gendry",
+                    status: "Alive"
+                },
+                bericDondarrion: {
+                    name: "Beric Dondarrion",
+                    status: "Alive"
+                },
+                euronGrayjoy:{
+                    name: "Euron Grayjoy",
+                    status: "Alive"
+                },
+            }
+        }
     }
 }
 </script>
-
-<style>
-    input, span {
-        z-index: -1;
-    }
-</style>
 
