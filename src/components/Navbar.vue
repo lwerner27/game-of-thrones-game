@@ -1,7 +1,7 @@
 <template>
     <nav class="grey darken-4">
         <div class="nav-wrapper container">
-            <a class="brand-logo">Game of Game of Thrones</a>
+            <a class="flow-text">Game of Game of Thrones</a>
         </div>
     </nav>
 </template>
