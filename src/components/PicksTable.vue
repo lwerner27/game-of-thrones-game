@@ -1,30 +1,44 @@
 <template>
     <div class="main-container">
-        <table>
+        <div class="row">
+            <div class="col s12 m8 offset-m2">
+                <table>
 
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Select Status</th>
-                </tr>
-            </thead>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Select Status</th>
+                        </tr>
+                    </thead>
 
-            <tbody>
-                <tr v-for="(pick, key) in picks" v-bind:key="key">
-                    <td>{{ pick.name }}</td>
-                    <td>
-                        <div class="input-field col-s12">
-                            <select id="select" v-model="picks[key].status">
-                                <option class="option-color" value="Alive">Alive</option>
-                                <option class="option-color" value="Dead">Dead</option>
-                                <option class="option-color" value="White Walker">White Walker</option>
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
+                    <tbody>
+                        <tr v-for="(pick, key) in picks" v-bind:key="key">
+                            <td>{{ pick.name }}</td>
+                            <td>
+                                <div class="input-field col-s12">
+                                    <select id="select" v-model="picks[key].status">
+                                        <option class="option-color" value="Alive">Alive</option>
+                                        <option class="option-color" value="Dead">Dead</option>
+                                        <option class="option-color" value="White Walker">White Walker</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
 
-        </table>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m2 offset-m2">
+                <button class="btn waves-effect waves-light black save-btn" type="submit" name="action">
+                    <div>
+                        Save
+                        <i class="material-icons left">save</i>
+                    </div>
+                </button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -143,5 +157,10 @@ export default {
 <style>
     .select-wrapper input.select-dropdown:focus {
         border-bottom: 1px solid black !important;
+    }
+
+    .save-btn {
+        width: 100%;
+        text-align: left;
     }
 </style>
