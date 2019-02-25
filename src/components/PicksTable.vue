@@ -139,3 +139,9 @@ export default {
     }
 }
 </script>
+
+<style>
+    .select-wrapper input.select-dropdown:focus {
+        border-bottom: 1px solid black !important;
+    }
+</style>
