@@ -1,7 +1,7 @@
 const express = require("express")
 const bodyParser = require('body-parser')
-// const mongoose = require("mongoose")
-// const routes = require('./routes')
+const mongoose = require("mongoose")
+const routes = require('./routes')
 
 const PORT = process.env.PORT || 5000
 const app = express()
@@ -10,14 +10,14 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
-// app.use(routes)
+app.use(routes)
 
-// // Connect to the Mongo DB
-// mongoose.connect(
-//     process.env.MONGODB_URI || 'mongodb://localhost:27017/TestAuth', {
-//         useNewUrlParser: true
-//     }
-// );
+// Connect to the Mongo DB
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost:27017/GameOfThronesDB', {
+        useNewUrlParser: true
+    }
+);
 
 
 app.listen(PORT, () => {
