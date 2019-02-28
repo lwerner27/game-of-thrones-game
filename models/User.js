@@ -30,7 +30,9 @@ const UserSchema = new Schema({
     picks: { 
         type: Object,
         required: true,
-        default: {}
+        default: {
+            picksMade: false
+        }
     }
 });
 
