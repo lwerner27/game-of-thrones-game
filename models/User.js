@@ -5,31 +5,32 @@ const bcrypt = require('bcrypt-nodejs');
 const UserSchema = new Schema({
     username: {
         type: String,
-        require: true,
+        required: true,
         unique: true
     },
     email: {
         type: String,
-        require: true,
+        required: true,
         unique: true
     },
     password: {
         type: String,
-        require: true
+        required: true
     },
     totalScore: {
         type: Number,
-        require: true,
+        required: true,
         default: 0
     },
     picksLocked: {
         type: Boolean,
-        require: true,
+        required: true,
         default: false
     },
     picks: { 
         type: Object,
-        required: true
+        required: true,
+        default: {}
     }
 });
 
