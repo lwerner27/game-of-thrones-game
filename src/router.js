@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import User from "./views/User"
-import League from './views/League'
 import Register from './views/Register'
 import MakePicks from './views/MakePicks'
 
@@ -23,18 +22,13 @@ export default new Router({
       component: User
     },
     {
-      path: "/league",
-      name: "league",
-      component: League
-    },
-    {
-      path: "/register",
-      name: "register",
+      path: "/user/register",
+      name: "User Registration",
       component: Register
     },
     {
       path: "/makepicks",
-      name: "makepicks",
+      name: "Make Picks",
       component: MakePicks
     }
   ]
