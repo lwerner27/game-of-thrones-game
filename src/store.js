@@ -8,7 +8,8 @@ export default new Vuex.Store({
     user: {
       jwt: null,
       userId: null,
-      picksLocked: false
+      picksLocked: false,
+      totalScore: 0
     }
   },
   mutations: {
