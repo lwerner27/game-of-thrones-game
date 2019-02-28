@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import User from "./views/User"
 import Register from './views/Register'
 import MakePicks from './views/MakePicks'
+import { Store } from 'vuex';
 
 Vue.use(Router)
 
@@ -29,7 +30,14 @@ export default new Router({
     {
       path: "/makepicks",
       name: "Make Picks",
-      component: MakePicks
+      component: MakePicks,
+      beforeEnter: (to, from, next) => {
+        if (Store.jwt) {
+          next()
+        } else {
+          next("/")
+        }
+      }
     }
   ]
 })
