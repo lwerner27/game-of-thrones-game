@@ -58,7 +58,9 @@ router.post('/login', (req, res) => {
                         res.json({
                             success: true,
                             token: 'JWT ' + token,
-                            userId: user._id
+                            userId: user._id,
+                            totalScore: user.totalScore,
+                            picksLocked: user.picksLocked
                         });
                     } else {
                         res.status(401).send({
