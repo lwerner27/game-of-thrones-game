@@ -11,7 +11,7 @@ const UserSchema = new Schema({
     email: {
         type: String,
         require: true,
-        unique: true,
+        unique: true
     },
     password: {
         type: String,
@@ -20,7 +20,16 @@ const UserSchema = new Schema({
     totalScore: {
         type: Number,
         require: true,
-        default: 0,
+        default: 0
+    },
+    picksLocked: {
+        type: Boolean,
+        require: true,
+        default: false
+    },
+    picks: { 
+        type: Object,
+        required: true
     }
 });
 
