@@ -12,7 +12,7 @@
                         </div>
                         <div class="row input-row">
                             <div class="col s6">
-                                <a class="waves-effect waves-light btn grey darken-4">LOGIN</a>
+                                <a v-on:click="attemptLogin" class="waves-effect waves-light btn grey darken-4">LOGIN</a>
                             </div>
                             <div class="col s6">
                                 <a href="/register" class="waves-effect waves-light btn grey darken-4 right">REGISTER</a>
@@ -28,6 +28,7 @@
 <script>
 import LoginForm from '../components/LoginForm'
 import MyTextInput from '../components/MyTextInput'
+import axios from 'axios'
 export default {
     data: () => (
         {
@@ -39,11 +40,15 @@ export default {
         LoginForm,
         MyTextInput
     },
-    // methods: {
-    //     testMethod: function() {
-    //         alert(this.username)
-    //     }
-    // }
+    methods: {
+        attemptLogin: function() {
+            let { username, password } = this
+            axios.post("http://localhost:5000/auth/login", { username, password })
+            .then(res => {
+                console.log(res)
+            })
+        }
+    }
 }
 </script>
 
