@@ -5,10 +5,14 @@
                 <div class="col s12 m4 offset-m4">
                     <login-form>
                         <div class="row input-row top-row">
-                            <my-text-input v-model="username" inputType="text" inputId="username" labelFor="username">Username</my-text-input>
+                            <my-text-input v-model="username" inputType="text" inputId="username" labelFor="username">
+                                Username
+                            </my-text-input>
                         </div>
                         <div class="row input-row">
-                            <my-text-input v-model="password" inputType="password" inputId="password" labelFor="password">Password</my-text-input>
+                            <my-text-input v-model="password" inputType="password" inputId="password" labelFor="password">
+                                Password
+                            </my-text-input>
                         </div>
                         <div class="row input-row">
                             <div class="col s6">
