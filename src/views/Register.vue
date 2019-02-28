@@ -45,6 +45,7 @@
 <script>
 import LoginForm from '../components/LoginForm'
 import MyTextInput from '../components/MyTextInput'
+import axios from 'axios'
 export default {
     components: {
         CustomForm: LoginForm,
@@ -60,8 +61,12 @@ export default {
     },
     methods: {
         onSubmit: function() {
-            if (this.password === this.confirmPassword) {
-                alert("Your passwords match!")
+            let { username, password, email, confirmPassword } = this
+            if (password === confirmPassword) {
+                axios.post('http://localhost:5000/register', { username, password, email })
+                .then(res => {
+                    console.log(res)
+                })
             } else {
                 alert("Your passwords do not match.")
             }
