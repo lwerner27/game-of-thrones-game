@@ -5,10 +5,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    jwt: null,
-    userId: null,
-    picksLocked: false,
-    role: null,
+    user: {
+      jwt: null,
+      userId: null,
+      picksLocked: false
+    }
   },
   mutations: {
 
