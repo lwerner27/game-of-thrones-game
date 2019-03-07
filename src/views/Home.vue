@@ -62,7 +62,8 @@ export default {
                             jwt: res.data.token,
                             userId: res.data.userId,
                             picksLocked: res.data.picksLocked,
-                            totalScore: res.data.totalScore
+                            totalScore: res.data.totalScore,
+                            picks: res.data.picks
                         }
                         this.updateUserInfo(user)
                         this.$router.push("/makepicks");
