@@ -19,7 +19,7 @@
                                 <a v-on:click.stop.prevent="attemptLogin" class="waves-effect waves-light btn grey darken-4">LOGIN</a>
                             </div>
                             <div class="col s6">
-                                <a href="/register" class="waves-effect waves-light btn grey darken-4 right">REGISTER</a>
+                                <a href="/user/register" class="waves-effect waves-light btn grey darken-4 right">REGISTER</a>
                             </div>
                         </div>
                     </login-form>
@@ -35,12 +35,10 @@ import MyTextInput from '../components/MyTextInput'
 import { mapMutations } from 'vuex'
 import axios from 'axios'
 export default {
-    data: () => (
-        {
-            username: "",
-            password: "",
-        }
-    ),
+    data: () => ({
+        username: "",
+        password: "",
+    }),
     components: {
         LoginForm,
         MyTextInput
@@ -49,25 +47,31 @@ export default {
         ...mapMutations([
             'UPDATE_USER_INFO'
         ]),
-        attemptLogin: function() {
-            let { username, password } = this
-            axios.post("http://localhost:5000/auth/login", { username, password })
-            .then(res => {
-                if (res.status === 200) {
-                    let user = {
-                        jwt: res.data.token,
-                        userId: res.data.userId,
-                        picksLocked: res.data.picksLocked,
-                        totalScore: res.data.totalScore
-                    }
-                    this.updateUserInfo(user)
-                    this.$router.push("/makepicks");
-                } else {
-                    console.log(res)
-                }
-            })
+        attemptLogin: function () {
+            let {
+                username,
+                password
+            } = this
+            axios.post("http://localhost:5000/auth/login", {
+                    username,
+                    password
+                })
+                .then(
+                    res => {
+                        let user = {
+                            jwt: res.data.token,
+                            userId: res.data.userId,
+                            picksLocked: res.data.picksLocked,
+                            totalScore: res.data.totalScore
+                        }
+                        this.updateUserInfo(user)
+                        this.$router.push("/makepicks");
+                    })
+                .catch(err => {
+                    alert("Username or Password are invalid.")
+                })
         },
-        updateUserInfo: function(userObj) {
+        updateUserInfo: function (userObj) {
             this.UPDATE_USER_INFO(userObj)
         }
     }
