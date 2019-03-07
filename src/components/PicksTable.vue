@@ -41,6 +41,12 @@
 <script>
 
 export default {
+    props: [
+        "userId",
+        "jwt",
+        "userPicks",
+        "picksLocked"
+    ],
     data: function () {
         return {
             picks: {
@@ -143,11 +149,15 @@ export default {
                 euronGrayjoy:{
                     name: "Euron Grayjoy",
                     status: "Alive"
-                }
+                },
+                picksMade: true 
             }
         }
     },
     methods: {
+        savePicks: function() {
+            // This method will save the user picks to the database.
+        },
         toggleStatus: function(event) {
             let character = event.target.value
             let characterStatus = this.picks[character].status
@@ -160,6 +170,11 @@ export default {
             }
         }
     },
+    mounted() {
+        if (this.userPicks.picksMade) {
+            this.picks = this.userPicks
+        }
+    }
 }
 </script>
 
