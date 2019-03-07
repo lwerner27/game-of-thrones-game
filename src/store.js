@@ -8,7 +8,8 @@ export default new Vuex.Store({
     jwt: null,
     userId: null,
     picksLocked: false,
-    totalScore: 0
+    totalScore: 0,
+    picks: null
   },
   mutations: {
     UPDATE_USER_INFO: function(state, userObj) {
@@ -16,6 +17,7 @@ export default new Vuex.Store({
       state.userId = userObj.userId
       state.picksLocked = userObj.picksLocked
       state.totalScore = userObj.totalScore
+      state.picks = userObj.picks
     }
   },
   actions: {
