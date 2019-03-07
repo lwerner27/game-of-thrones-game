@@ -6,16 +6,26 @@
                     <h3>Make Your Picks</h3>
                 </div>
             </div>
-            <picks-table></picks-table>
+            <picks-table :userPicks="this.picks" :userId="this.userId" :jwt="this.jwt" :picksLocked="this.picksLocked" ></picks-table>
         </div>
     </div>
 </template>
 
 <script>
 import PicksTable from '../components/PicksTable'
+import axios from 'axios'
+import { mapState } from 'vuex';
 export default {
     components: {
         PicksTable
+    },
+    computed: {
+        ...mapState([
+            "userId",
+            "picks",
+            "jwt",
+            "picksLocked"
+        ])
     }
 }
 </script>
