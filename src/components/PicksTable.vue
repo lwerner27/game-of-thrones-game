@@ -8,20 +8,16 @@
                         <tr>
                             <th>Name</th>
                             <th>Select Status</th>
+                            <th>Change Status</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr v-for="(pick, key) in picks" v-bind:key="key">
                             <td>{{ pick.name }}</td>
+                            <td> {{ pick.status }} </td>
                             <td>
-                                <div class="input-field col-s12">
-                                    <select id="select" v-model="picks[key].status">
-                                        <option class="option-color" value="Alive">Alive</option>
-                                        <option class="option-color" value="Dead">Dead</option>
-                                        <option class="option-color" value="White Walker">White Walker</option>
-                                    </select>
-                                </div>
+                                <button v-on:click.stop.prevent="toggleStatus" :value="key" class="btn waves-effect waves-light black">Toggle Status</button>
                             </td>
                         </tr>
                     </tbody>
@@ -147,18 +143,27 @@ export default {
                 euronGrayjoy:{
                     name: "Euron Grayjoy",
                     status: "Alive"
-                },
+                }
             }
         }
-    }
+    },
+    methods: {
+        toggleStatus: function(event) {
+            let character = event.target.value
+            let characterStatus = this.picks[character].status
+            if (characterStatus === "Alive") {
+                this.picks[character].status = "Dead"
+            } else if (characterStatus === "Dead") {
+                this.picks[character].status = "Whitewalker"
+            } else if (characterStatus === "Whitewalker") {
+                this.picks[character].status = "Alive"
+            }
+        }
+    },
 }
 </script>
 
-<style>
-    .select-wrapper input.select-dropdown:focus {
-        border-bottom: 1px solid black !important;
-    }
-
+<style scoped>
     .save-btn {
         width: 100%;
         text-align: left;
