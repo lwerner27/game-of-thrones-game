@@ -6,7 +6,13 @@
                     <h3>Make Your Picks</h3>
                 </div>
             </div>
-            <picks-table :userPicks="this.picks" :userId="this.userId" :jwt="this.jwt" :picksLocked="this.picksLocked" ></picks-table>
+            <picks-table 
+                :userPicks="this.picks" 
+                :userId="this.userId" 
+                :jwt="this.jwt" 
+                :picksLocked="this.picksLocked" 
+                :picksMade="this.picksMade" >
+            </picks-table>
         </div>
     </div>
 </template>
@@ -24,7 +30,8 @@ export default {
             "userId",
             "picks",
             "jwt",
-            "picksLocked"
+            "picksLocked",
+            "picksMade"
         ])
     }
 }
