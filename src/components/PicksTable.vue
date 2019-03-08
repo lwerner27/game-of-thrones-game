@@ -27,7 +27,7 @@
         </div>
         <div class="row">
             <div class="col s12 m2 offset-m2">
-                <button class="btn waves-effect waves-light black save-btn" type="submit" name="action">
+                <button v-on:click.stop.prevent="savePicks" class="btn waves-effect waves-light black save-btn" type="submit" name="action">
                     <div>
                         Save
                         <i class="material-icons left">save</i>
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 export default {
     props: [
         "userId",
@@ -54,7 +54,17 @@ export default {
     },
     methods: {
         savePicks: function() {
-            // This method will save the user picks to the database.
+            axios.defaults.headers.common['Authorization'] = this.jwt
+            let reqObj = {
+                userId: this.userId,
+                picks: this.picks
+            }
+            axios.put("http://localhost:5000/api/picks/updatepicks", reqObj)
+            .then(res => {
+                if (res.status === 200) {
+                    alert("Your updated picks have been saved.")
+                }
+            })
         },
         toggleStatus: function(event) {
             let character = event.target.value
