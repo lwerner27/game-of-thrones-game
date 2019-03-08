@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
-const basePicks = require("../shared/picks") 
+const { basePicks } = require("../shared") 
 
 const UserSchema = new Schema({
     username: {
