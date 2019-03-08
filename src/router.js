@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import User from "./views/User"
+import Rules from "./views/Rules"
 import Register from './views/Register'
 import MakePicks from './views/MakePicks'
 import Store from './store'
@@ -26,6 +27,11 @@ export default new Router({
       path: "/user/register",
       name: "userRegistration",
       component: Register
+    },
+    {
+      path: "/rules",
+      name: "rules",
+      component: Rules
     },
     {
       path: "/makepicks",
