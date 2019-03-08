@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
+const basePicks = require("../shared/picks") 
 
 const UserSchema = new Schema({
     username: {
@@ -30,9 +31,7 @@ const UserSchema = new Schema({
     picks: { 
         type: Object,
         required: true,
-        default: {
-            picksMade: false
-        }
+        default: basePicks
     }
 });
 
