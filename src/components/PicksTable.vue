@@ -35,17 +35,17 @@
                     <div class="col s12">
                         <form-container>
                             <div class="input-field col s12">
-                                <input placeholder="Yes or No" id="isDannyPrego" type="text" v-bind:value="bonusQuestions.isDannyPrego">
+                                <input placeholder="Yes or No" id="isDannyPrego" type="text" v-model.trim="bonusQuestions.isDannyPrego">
                                 <span class="helper-text" data-error="wrong" data-success="right">Is Danaerys pregnant?</span>
                             </div>
 
                             <div class="input-field col s12">
-                                <input placeholder="Schmittywerbenjaegermanjensen" id="nightKingKiller" type="text" v-bind:value="bonusQuestions.nightKingKiller">
+                                <input placeholder="Schmittywerbenjaegermanjensen" id="nightKingKiller" type="text" v-model.trim="bonusQuestions.nightKingKiller">
                                 <span class="helper-text" data-error="wrong" data-success="right">Who kills the Night King?</span>
                             </div>
 
                             <div class="input-field col s12">
-                                <input placeholder="Gendry" id="ironThroneSitter" type="text" v-bind:value="bonusQuestions.ironThroneSitter">
+                                <input placeholder="Gendry" id="ironThroneSitter" type="text" v-model.trim="bonusQuestions.ironThroneSitter">
                                 <span class="helper-text" data-error="wrong" data-success="right">Who will hold the Iron Throne?</span>
                             </div>
                         </form-container>
@@ -65,6 +65,7 @@
                 </button>
             </div>
         </div>
+
     </div>
 </template>
 
@@ -75,7 +76,6 @@ import axios from 'axios'
 export default {
     components: {
         FormContainer: LoginForm,
-        MyTextInput
     },
     props: [
         "userId",
