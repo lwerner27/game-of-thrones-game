@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <form class="col s12 z-depth-2">
+        <form class="col s12">
             <slot></slot>
         </form>
     </div>
