@@ -1,20 +1,14 @@
 <template>
-    <nav class="grey darken-4">
-        <div class="nav-wrapper container">
-            <a class="flow-text">The Game of Game of Thrones</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <router-link tag="li" to="/rules">
-                    <a>Rules</a>
-                </router-link>
-            </ul>
-        </div>
-    </nav>
+    <div class="navbar-fixed">
+        <nav class="nav-extended grey darken-4">
+            <div class="nav-wrapper container">
+                <a class="hide-on-small-only brand-logo">THE GAME OF GAME OF THRONES</a>
+                <a class="show-on-small hide-on-med-and-up brand-logo center">T.G.O.G.O.T.</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <router-link tag="li" to="/rules"><a>RULES</a></router-link>
+                </ul>
+            </div>
+        </nav>
+    </div>
 </template>
-
-<style>
-    nav {
-        position: fixed;
-        top: 0;
-        z-index: 900;
-    }
-</style>
