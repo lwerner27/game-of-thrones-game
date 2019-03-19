@@ -15,11 +15,13 @@
                             </my-text-input>
                         </div>
                         <div class="row input-row">
-                            <div class="col s6">
-                                <a v-on:click.stop.prevent="attemptLogin" class="waves-effect waves-light btn grey darken-4">LOGIN</a>
+                            <div class="col s12">
+                                <a v-on:click.stop.prevent="attemptLogin" class="waves-effect waves-light btn grey darken-4 login-btn">LOGIN</a>
                             </div>
-                            <div class="col s6">
-                                <a href="/user/register" class="waves-effect waves-light btn grey darken-4 right">REGISTER</a>
+                        </div>
+                        <div class="row input-row">
+                            <div class="col s12">
+                                <a href="/user/register" class="waves-effect waves-light btn grey darken-4 register-btn">REGISTER</a>
                             </div>
                         </div>
                     </login-form>
@@ -69,8 +71,8 @@ export default {
                         this.$router.push("/makepicks");
                     })
                 .catch(err => {
-                    throw(err)
                     alert("Username or Password are invalid.")
+                    throw(err)
                 })
         },
         updateUserInfo: function (userObj) {
@@ -83,6 +85,7 @@ export default {
 
 <style scoped>
     .main-container {
+        margin-top: -64px;
         height: 100vh;
     }
     
@@ -93,5 +96,9 @@ export default {
     .input-row {
         margin-right: 10px;
         margin-left: 10px;
+    }
+
+    .register-btn, .login-btn {
+        width: 100%
     }
 </style>
