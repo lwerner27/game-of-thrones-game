@@ -71,7 +71,6 @@
 
 <script>
 import LoginForm from './LoginForm'
-import MyTextInput from './MyTextInput'
 import axios from 'axios'
 export default {
     components: {
