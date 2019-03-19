@@ -2,7 +2,7 @@
     <div class="main-container">
         <div class="row">
             <div class="col s12 m8 offset-m2">
-                <table>
+                <table class="responsive-table">
 
                     <thead>
                         <tr>
