@@ -1,4 +1,3 @@
-// const mongoose = require('mongoose');
 const passport = require('passport');
 const settings = require('../config/settings');
 require('../config/passport')(passport);
@@ -19,7 +18,6 @@ router.post('/register', (req, res) => {
         let newUser = new User({
             username: req.body.username,
             password: req.body.password,
-            email: req.body.email
         });
 
         newUser.save(err => {

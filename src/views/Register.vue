@@ -10,12 +10,6 @@
                                 Username
                             </my-text-input>
                         </div>
-                        
-                        <div class="row input-row top-row">
-                            <my-text-input v-model="email" inputType="text" inputId="email" labelFor="email">
-                                Email
-                            </my-text-input>
-                        </div>
 
                         <div class="row input-row">
                             <my-text-input v-model="password" inputType="password" inputId="password" labelFor="password">
@@ -54,16 +48,15 @@ export default {
     data: function() {
         return {
             username: "",
-            email: "",
             password: "",
             confirmPassword:""
         }
     },
     methods: {
         onSubmit: function() {
-            let { username, password, email, confirmPassword } = this
+            let { username, password, confirmPassword } = this
             if (password === confirmPassword) {
-                axios.post('/auth/register', { username, password, email })
+                axios.post('/auth/register', { username, password })
                 .then(res => {
                     if (res.status === 200) {
                         alert("You account has been created.")
