@@ -69,7 +69,7 @@ export default {
                         this.$router.push("/makepicks");
                     })
                 .catch(err => {
-                    console.log(err)
+                    throw(err)
                     alert("Username or Password are invalid.")
                 })
         },

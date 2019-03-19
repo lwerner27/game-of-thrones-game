@@ -65,7 +65,12 @@ export default {
             if (password === confirmPassword) {
                 axios.post('/auth/register', { username, password, email })
                 .then(res => {
-                    console.log(res)
+                    if (res.status === 200) {
+                        alert("You account has been created.")
+                        this.$router.push("/");
+                    } else {
+                        alert("There was an error creating your account please try again later.")
+                    }
                 })
             } else {
                 alert("Your passwords do not match.")
