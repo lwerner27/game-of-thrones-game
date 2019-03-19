@@ -58,11 +58,11 @@ export default {
             if (password === confirmPassword) {
                 axios.post('/auth/register', { username, password })
                 .then(res => {
-                    if (res.status === 200) {
+                    if (res.data.success) {
                         alert("You account has been created.")
                         this.$router.push("/");
                     } else {
-                        alert("There was an error creating your account please try again later.")
+                        alert(res.data.msg)
                     }
                 })
             } else {
