@@ -10,7 +10,7 @@
                             </my-text-input>
                         </div>
                         <div class="row input-row">
-                            <my-text-input v-model="password" inputType="password" inputId="password" labelFor="password">
+                            <my-text-input v-model="password" v-on:submit-login="attemptLogin" inputType="password" inputId="password" labelFor="password">
                                 Password
                             </my-text-input>
                         </div>
