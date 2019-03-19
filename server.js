@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const mongoose = require("mongoose")
 const routes = require('./routes')
 // const cors = require("cors")
-var history = require('connect-history-api-fallback');
+const history = require('connect-history-api-fallback');
 
 const PORT = process.env.PORT || 5000
 const app = express()
