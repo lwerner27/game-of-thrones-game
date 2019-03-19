@@ -134,7 +134,7 @@ export default {
             let { isDannyPrego, nightKingKiller, ironThroneSitter } = reqObj.picks.bonusQuestions
 
             if (this.checkBonusQuestions(this.characterNames, isDannyPrego, nightKingKiller, ironThroneSitter)) {
-                axios.put("http://localhost:5000/api/picks/updatepicks", reqObj)
+                axios.put("/api/picks/updatepicks", reqObj)
                 .then(res => {
                     if (res.status === 200) {
                         alert("Your updated picks have been saved.")

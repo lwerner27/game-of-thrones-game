@@ -63,7 +63,7 @@ export default {
         onSubmit: function() {
             let { username, password, email, confirmPassword } = this
             if (password === confirmPassword) {
-                axios.post('http://localhost:5000/auth/register', { username, password, email })
+                axios.post('/auth/register', { username, password, email })
                 .then(res => {
                     console.log(res)
                 })

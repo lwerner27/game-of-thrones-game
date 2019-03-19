@@ -52,7 +52,7 @@ export default {
                 username,
                 password
             } = this
-            axios.post("http://localhost:5000/auth/login", {
+            axios.post("/auth/login", {
                     username,
                     password
                 })
