@@ -19,7 +19,7 @@ export default new Router({
       component: Home
     },
     {
-      path: "/user",
+      path: "/user/:id",
       name: "user",
       component: User
     },
