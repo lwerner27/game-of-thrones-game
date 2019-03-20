@@ -21,7 +21,14 @@ export default new Router({
     {
       path: "/user/:id",
       name: "user",
-      component: User
+      component: User,
+      beforeEnter: (to, from, next) => {
+        if (Store.state.jwt) {
+          next() 
+        } else {
+          next("/")
+        }
+      }
     },
     {
       path: "/user/register",
