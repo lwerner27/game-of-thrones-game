@@ -18,6 +18,14 @@ module.exports = {
             res.json(dbModel)
         })
         .catch(err => res.status(422).json(err))
-    }
+    },
+
+    getBasicUserData: function(req, res) {
+        db.User.findById(req.params.userId, "username picks totalScore")
+        .then(dbModel => {
+            res.json(dbModel)
+        })
+        .catch(err => res.status(422).json(err))
+    } 
     
 }
