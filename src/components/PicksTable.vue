@@ -98,7 +98,6 @@ export default {
             }
         },
         checkName: function(array, name) {
-            console.log(name)
             if (array.includes(name)) {
                 return true
             } else {
@@ -165,7 +164,6 @@ export default {
         }
         this.characterNames.push('nobody')
         this.characterNames.push("night king")
-        console.log(this.characterNames)
     }
 }
 </script>
