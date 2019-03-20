@@ -21,7 +21,7 @@
                         </div>
                         <div class="row input-row">
                             <div class="col s12">
-                                <a href="/user/register" class="waves-effect waves-light btn grey darken-4 register-btn">REGISTER</a>
+                                <a href="/register" class="waves-effect waves-light btn grey darken-4 register-btn">REGISTER</a>
                             </div>
                         </div>
                     </login-form>
