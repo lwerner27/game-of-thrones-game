@@ -63,6 +63,7 @@ export default {
                         let user = {
                             jwt: res.data.token,
                             userId: res.data.userId,
+                            username: res.data.username,
                             picksLocked: res.data.picksLocked,
                             totalScore: res.data.totalScore,
                             picks: res.data.picks,
