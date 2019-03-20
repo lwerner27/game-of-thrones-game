@@ -1,3 +1,4 @@
 module.exports = {
-    basePicks: require("./basePicks")
+    basePicks: require("./basePicks"),
+    getToken: require("./getToken")
 }
