@@ -6,9 +6,21 @@
                 <a class="show-on-small hide-on-med-and-up brand-logo center">T.G.O.G.O.T.</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <router-link  v-if="userId" tag="li" :to="'/user/' + userId"><a>MY ACCOUNT</a></router-link>
                     <router-link tag="li" to="/rules"><a>RULES</a></router-link>
                 </ul>
             </div>
         </nav>
     </div>
 </template>
+
+<script>
+import { mapState } from 'vuex';
+export default {
+    computed: {
+        ...mapState([
+            "userId"
+        ])
+    }
+}
+</script>
