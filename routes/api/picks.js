@@ -2,6 +2,7 @@ const router = require('express').Router();
 const db = require('../../controllers');
 const passport = require('passport');
 require('../../config/passport')(passport);
+const { getToken } = require("../../Shared")
 
 // This route handles the updating of user's picks
 router.put("/updatePicks", passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -17,17 +18,4 @@ router.put("/updatePicks", passport.authenticate('jwt', { session: false }), (re
     }
 })
 
-// Function for getting token from the authorization header
-function getToken(headers) {
-    if (headers && headers.authorization) {
-        let parted = headers.authorization.split(' ');
-        if (parted.length === 2) {
-            return parted[1];
-        } else {
-            return null;
-        }
-    } else {
-        return null;
-    }
-};
 module.exports = router;
