@@ -1,6 +1,6 @@
 <template>
     <div class="main-container">
-        <div class="container">
+        <div class="container" v-if="this.username">
             <div class="row">
                 <div class="col s12 m10 offset-m1">
                     <h3>{{ this.username.toUpperCase() }}</h3>
@@ -74,11 +74,17 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col s12">
+                    <router-link tag="button" class="btn grey darken-4" to="/user/5c929f1988a1db14484faab3">lwerner</router-link>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 import { mapState } from 'vuex';
 export default {
     data: function() {
@@ -103,7 +109,14 @@ export default {
             this.picks = picks
             
         } else {
-            console.log("You are logged in a different user.")
+            axios.defaults.headers.common['Authorization'] = this.$store.state.jwt
+            axios.get("/api/users/test")
+            .then(res => {
+                console.log(res)
+                // this.username = res.data.username
+                // this.totalScore = res.data.totalScore
+                // this.picks = res.data.picks
+            })
         }
     }
 }
