@@ -6,7 +6,6 @@ import Rules from "./views/Rules"
 import Register from './views/Register'
 import MakePicks from './views/MakePicks'
 import Search from "./views/Search"
-import SearchResults from './views/SearchResults'
 import Store from './store'
 
 Vue.use(Router)
