@@ -8,7 +8,7 @@
                             Search Usernames
                         </cust-text-input>
                         <div class="col s12">
-                            <button class="btn grey darken-4">
+                            <button @click="searchDatabase" class="btn grey darken-4">
                                 Search
                             </button>
                         </div>
@@ -25,6 +25,11 @@ export default {
     data: function() {
         return {
             searchText: ""
+        }
+    },
+    methods: {
+        searchDatabase: function() {
+            this.$router.push("/search/users/" + this.searchText);
         }
     },
     components: {
