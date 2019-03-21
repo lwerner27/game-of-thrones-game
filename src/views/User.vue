@@ -4,13 +4,8 @@
             <div class="row">
                 <div class="col s12 m10 offset-m1">
                     <h3>{{ this.username.toUpperCase() }}</h3>
-
-                    <div class="row">
-                        <div class="col s12 m3">
-                            <h5>Current Score: {{ this.totalScore }}</h5>
-                        </div>
-                    </div>
-
+                    <h6>Current Score: {{ this.totalScore }}</h6>
+                    <br>
                     <div class="row">
                         <div class="col s12 m3">
                             <router-link 
@@ -74,11 +69,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col s12">
-                    <router-link tag="button" class="btn grey darken-4" to="/user/5c929f1988a1db14484faab3">lwerner</router-link>
-                </div>
-            </div>
         </div>
     </div>
 </template>
@@ -99,25 +89,33 @@ export default {
             "jwt"
         ])
     },
-    mounted: function() {
-        if (this.$store.state.userId === this.$route.params.id) {
-            console.log("You are logged in as this user.")
-            let { username, picks, totalScore } = this.$store.state
+    methods: {
+        getPageInfo: function(state, route) {
+            if (state.userId === route.params.id) {
+                let { username, picks, totalScore } = state
 
-            this.username = username
-            this.totalScore = totalScore
-            this.picks = picks
-            
-        } else {
-            axios.defaults.headers.common['Authorization'] = this.$store.state.jwt
-            axios.get("/api/users/test")
-            .then(res => {
-                console.log(res)
-                // this.username = res.data.username
-                // this.totalScore = res.data.totalScore
-                // this.picks = res.data.picks
-            })
+                this.username = username
+                this.totalScore = totalScore
+                this.picks = picks
+                
+            } else {
+                axios.defaults.headers.common['Authorization'] = state.jwt
+                axios.get("/api/users/user/" + route.params.id)
+                .then(res => {
+                    this.username = res.data.username
+                    this.totalScore = res.data.totalScore
+                    this.picks = res.data.picks
+                })
+            } 
         }
+    },
+    mounted: function() {
+        this.getPageInfo(this.$store.state, this.$route)
+    },
+    beforeRouteUpdate (to, from, next) {
+        this.getPageInfo(this.$store.state, to)
+        window.scrollTo(0,0);
+        next()
     }
 }
 </script>
