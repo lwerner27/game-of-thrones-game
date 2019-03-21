@@ -16,4 +16,16 @@ router.get("/user/:userId", passport.authenticate('jwt', { session: false }), (r
     }
 })
 
+router.get("/username/:username", passport.authenticate('jwt', { session: false }), (req, res) => {
+    const token = getToken(req.headers);
+    if (token) {
+        db.User.findUserByUsername(req, res)
+    } else {
+        return res.status(403).send({
+            success: false,
+            msg: 'Unauthorized.'
+        });
+    }
+})
+
 module.exports = router
