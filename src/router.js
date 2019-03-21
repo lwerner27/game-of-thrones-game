@@ -5,6 +5,7 @@ import User from "./views/User"
 import Rules from "./views/Rules"
 import Register from './views/Register'
 import MakePicks from './views/MakePicks'
+import Search from "./views/Search"
 import Store from './store'
 
 Vue.use(Router)
@@ -39,6 +40,11 @@ export default new Router({
       path: "/rules",
       name: "rules",
       component: Rules
+    },
+    {
+      path: "/search",
+      name: "search",
+      component: Search
     },
     {
       path: "/makepicks",
