@@ -6,7 +6,8 @@
                 <a class="show-on-small hide-on-med-and-up brand-logo center">T.G.O.G.O.T.</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <router-link  v-if="userId" tag="li" :to="'/user/' + userId"><a>MY ACCOUNT</a></router-link>
+                    <router-link  v-if="userId" tag="li" to="/search"><a><i class="material-icons">search</i></a></router-link>
+                    <router-link  v-if="userId" tag="li" :to="'/user/' + userId"><i class="material-icons">account_circle</i></router-link>
                     <router-link tag="li" to="/rules"><a>RULES</a></router-link>
                 </ul>
             </div>
