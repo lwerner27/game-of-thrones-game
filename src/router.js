@@ -48,11 +48,6 @@ export default new Router({
       component: Search
     },
     {
-    path: "/search/users/:searchTerm",
-    name: "search-results",
-    component: SearchResults
-    },
-    {
       path: "/makepicks",
       name: "Make Picks",
       component: MakePicks,
