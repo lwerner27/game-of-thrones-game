@@ -1,7 +1,49 @@
 <template>
-    <div class="main-container">
+    <div class="main-container valign-wrapper">
         <div class="container">
-            <h1>THIS IS THE SEARCH PAGE.</h1>
+            <div class="row">
+                <div class="col s12 m4 offset-m4 z-depth-2">
+                    <div class="row top-row">
+                        <cust-text-input v-model="searchText" inputType="text" inputId="searchText" labelFor="searchText">
+                            Search Usernames
+                        </cust-text-input>
+                        <div class="col s12">
+                            <button class="btn grey darken-4">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
+
+<script>
+import MyTextInput from '../components/MyTextInput';
+export default {
+    data: function() {
+        return {
+            searchText: ""
+        }
+    },
+    components: {
+        CustTextInput: MyTextInput
+    }
+}
+</script>
+
+<style scoped>
+    .main-container {
+        margin-top: -64px;
+        height: 100vh;
+    }
+    button {
+        margin: 0px;
+        width: 100%;
+    }
+    .top-row {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+</style>
