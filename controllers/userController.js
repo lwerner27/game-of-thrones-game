@@ -27,13 +27,5 @@ module.exports = {
         })
         .catch(err => res.status(422).json(err))
     },
-
-    searchForUsers: function(req, res) {
-        db.User.find({$text: {$search: req.params.searchTerm}})
-        .then(dbModels => {
-            res.json(dbModels)
-        })
-        .catch(err => res.status(422).json(err))
-    }
     
 }
