@@ -21,6 +21,8 @@
 
 <script>
 import MyTextInput from '../components/MyTextInput';
+import axios from 'axios'
+import { mapState } from 'vuex';
 export default {
     data: function() {
         return {
@@ -29,8 +31,17 @@ export default {
     },
     methods: {
         searchDatabase: function() {
-            this.$router.push("/search/users/" + this.searchText);
+            axios.defaults.headers.common['Authorization'] = this.jwt
+            axios.get(`/api/users/username/${this.searchText.toLowerCase()}`)
+            .then(res => {
+                this.$router.push("/user/" + res.data._id)
+            })
         }
+    },
+    computed: {
+        ...mapState([
+            "jwt"
+        ])
     },
     components: {
         CustTextInput: MyTextInput
