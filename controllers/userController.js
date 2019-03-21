@@ -29,7 +29,6 @@ module.exports = {
     },
 
     findUserByUsername: function(req, res) {
-        console.log(req.params.username)
         db.User.findOne({username: req.params.username}, "__id")
         .then(dbModel => {
             res.json(dbModel)
