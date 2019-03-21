@@ -27,5 +27,14 @@ module.exports = {
         })
         .catch(err => res.status(422).json(err))
     },
+
+    findUserByUsername: function(req, res) {
+        console.log(req.params.username)
+        db.User.findOne({username: req.params.username}, "__id")
+        .then(dbModel => {
+            res.json(dbModel)
+        })
+        .catch(err => res.status(422).json(err))
+    }
     
 }
