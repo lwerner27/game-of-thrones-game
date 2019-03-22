@@ -10,7 +10,8 @@ export default new Vuex.Store({
     username: null,
     picksLocked: false,
     totalScore: 0,
-    picks: null
+    picks: null,
+    friends: []
   },
   mutations: {
     UPDATE_USER_INFO: function(state, userObj) {
