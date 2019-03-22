@@ -6,6 +6,7 @@ import Rules from "./views/Rules"
 import Register from './views/Register'
 import MakePicks from './views/MakePicks'
 import Search from "./views/Search"
+import BrowseUsers from './views/BrowseUsers'
 import Store from './store'
 
 Vue.use(Router)
@@ -57,6 +58,11 @@ export default new Router({
           next("/")
         }
       }
+    },
+    {
+      path: "/users/browse",
+      name: "Browse Users",
+      component: BrowseUsers
     }
   ]
 })
