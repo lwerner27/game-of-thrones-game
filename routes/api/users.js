@@ -52,4 +52,16 @@ router.put("/add/friend", passport.authenticate('jwt', { session: false }), (req
     }
 })
 
+router.put("/remove/friend", passport.authenticate('jwt', { session: false }), (req, res) => {
+    const token = getToken(req.headers);
+    if (token) {
+        db.User.removeFriend(req, res)
+    } else {
+        return res.status(403).send({
+            success: false,
+            msg: 'Unauthorized.'
+        });
+    }
+})
+
 module.exports = router
