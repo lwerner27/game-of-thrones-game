@@ -16,6 +16,8 @@
                             >
                                 UPDATE PICKS
                             </router-link>
+                            <button v-else-if="this.friends.includes(this.$route.params.id)" class="btn grey darken-4">Remove Friend</button>
+                            <button v-else class="btn grey darken-4" @click.stop.prevent="addFriend">Add Friend</button>
                         </div>
                     </div>
 
@@ -75,7 +77,7 @@
 
 <script>
 import axios from 'axios'
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 export default {
     data: function() {
         return {
@@ -86,10 +88,17 @@ export default {
     },
     computed: {
         ...mapState([
-            "jwt"
-        ])
+            "jwt",
+            "friends"
+        ]),
     },
     methods: {
+        ...mapMutations([
+            "ADD_FRIEND"
+        ]),
+        addFriend: function() {
+            this.ADD_FRIEND(this.$route.params.id)
+        },
         getPageInfo: function(state, route) {
             if (state.userId === route.params.id) {
                 let { username, picks, totalScore } = state
