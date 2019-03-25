@@ -8,6 +8,7 @@
                     <br>
                     <div class="row">
                         <div class="col s12 m3">
+                            <!-- Conditional Button if viewing logged in users pages. -->
                             <router-link 
                                 tag="button" 
                                 to="/makepicks" 
@@ -16,7 +17,15 @@
                             >
                                 UPDATE PICKS
                             </router-link>
-                            <button v-else-if="this.friends.includes(this.$route.params.id)" class="btn grey darken-4">Remove Friend</button>
+                            <!-- Conditional button if viewing friends page. -->
+                            <button 
+                                v-else-if="this.friendStatus" 
+                                @click="removeFriend" 
+                                class="btn grey darken-4"
+                            >
+                                Remove Friend
+                            </button>
+                            <!-- Conditional button if viewing non-friends page. -->
                             <button v-else class="btn grey darken-4" @click.stop.prevent="addFriend">Add Friend</button>
                         </div>
                     </div>
@@ -83,7 +92,8 @@ export default {
         return {
             username: null,
             totalScore: null,
-            picks: null
+            picks: null,
+            friendStatus: null
         }
     },
     computed: {
@@ -95,7 +105,8 @@ export default {
     },
     methods: {
         ...mapMutations([
-            "ADD_FRIEND"
+            "ADD_FRIEND",
+            "REMOVE_FRIEND"
         ]),
         addFriend: function() {
             this.ADD_FRIEND(this.$route.params.id)
@@ -108,12 +119,17 @@ export default {
             })
             .then(res => {
                 if (res.status === 200) {
+                    this.friendStatus = true
                     alert (res.data.msg)
                 } else {
                     alert("There was a problem following this user. Please try again later.")
                 }
             })
 
+        },
+        removeFriend: function() {
+            this.REMOVE_FRIEND(this.$route.params.id)
+            this.friendStatus = false
         },
         getPageInfo: function(state, route) {
             if (state.userId === route.params.id) {
@@ -136,6 +152,12 @@ export default {
     },
     mounted: function() {
         this.getPageInfo(this.$store.state, this.$route)
+
+        if (this.$store.state.friends.includes(this.$route.params.id)) {
+            this.friendStatus = true
+        } else {
+            this.friendStatus === false
+        }
     },
     beforeRouteUpdate (to, from, next) {
         this.getPageInfo(this.$store.state, to)
