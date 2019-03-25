@@ -21,6 +21,7 @@ export default new Vuex.Store({
       state.picksLocked = userObj.picksLocked
       state.totalScore = userObj.totalScore
       state.picks = userObj.picks
+      state.friends = userObj.friends
     },
     ADD_FRIEND: function(state, userId) {
       state.friends.push(userId)
