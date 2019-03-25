@@ -25,7 +25,10 @@ export default new Vuex.Store({
     },
     ADD_FRIEND: function(state, userId) {
       state.friends.push(userId)
-    } 
+    },
+    REMOVE_FRIEND: function(state, userId) {
+      state.friends.splice(state.friends.indexOf(userId), 1)
+    }
   },
   actions: {
 
