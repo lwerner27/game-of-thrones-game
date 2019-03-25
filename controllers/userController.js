@@ -42,6 +42,23 @@ module.exports = {
             res.json(dbModels)
         })
         .catch(err => res.status(422).json(err))
-    } 
+    },
+
+    addFriend: function(req, res) {
+        db.User.findById(req.body.userId)
+        .then(dbModel => {
+            if (dbModel.friends) {
+                dbModel.friends.push(req.body.friendId)
+                dbModel.save()
+                res.status(200).json({msg: "Added to friends."})
+            } else {
+                dbModel.friends = []
+                dbModel.friends.push(req.body.friendId)
+                dbModel.save()
+                res.status(200).json({msg: "Added to friends."})
+            }
+        })
+        .catch(err => res.status(422).json(err))
+    }
     
 }
