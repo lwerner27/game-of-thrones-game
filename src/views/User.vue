@@ -88,6 +88,7 @@ export default {
     },
     computed: {
         ...mapState([
+            "userId",
             "jwt",
             "friends"
         ]),
@@ -98,6 +99,21 @@ export default {
         ]),
         addFriend: function() {
             this.ADD_FRIEND(this.$route.params.id)
+            axios.defaults.headers.common['Authorization'] = this.jwt
+            let url = `/api/users/add/friend`
+            
+            axios.put(url, {
+                userId: this.userId,
+                friendId: this.$route.params.id
+            })
+            .then(res => {
+                if (res.status === 200) {
+                    alert (res.data.msg)
+                } else {
+                    alert("There was a problem following this user. Please try again later.")
+                }
+            })
+
         },
         getPageInfo: function(state, route) {
             if (state.userId === route.params.id) {
