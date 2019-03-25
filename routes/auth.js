@@ -61,6 +61,7 @@ router.post('/login', (req, res) => {
                             totalScore: user.totalScore,
                             picksLocked: user.picksLocked,
                             picks: user.picks,
+                            friends: user.friends
                         });
                     } else {
                         res.status(401).send({
