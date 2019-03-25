@@ -67,6 +67,7 @@ export default {
                             picksLocked: res.data.picksLocked,
                             totalScore: res.data.totalScore,
                             picks: res.data.picks,
+                            friends: res.data.friends
                         }
                         this.updateUserInfo(user)
                         this.$router.push("/makepicks");
