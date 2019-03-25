@@ -59,6 +59,16 @@ module.exports = {
             }
         })
         .catch(err => res.status(422).json(err))
+    },
+
+    removeFriend: function(req, res) {
+        db.User.findById(req.body.userId)
+        .then(dbModel => {
+            dbModel.friends.splice(dbModel.friends.indexOf(req.body.friendId, 1))
+            dbModel.save()
+            res.status(200).json({msg: "Removed from friends."})
+        })
+        .catch(err => res.status(422).json(err))
     }
     
 }
