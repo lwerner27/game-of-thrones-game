@@ -28,8 +28,8 @@ const UserSchema = new Schema({
         type: Object,
         required: true,
         default: basePicks
-    }
-    // friends: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+    },
+    friends: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 });
 
 UserSchema.plugin(uniqueValidator);
