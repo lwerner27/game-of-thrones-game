@@ -108,6 +108,7 @@ export default {
             "ADD_FRIEND",
             "REMOVE_FRIEND"
         ]),
+
         addFriend: function() {
             this.ADD_FRIEND(this.$route.params.id)
             axios.defaults.headers.common['Authorization'] = this.jwt
@@ -127,10 +128,24 @@ export default {
             })
 
         },
+
         removeFriend: function() {
             this.REMOVE_FRIEND(this.$route.params.id)
-            this.friendStatus = false
+            axios.defaults.headers.common['Authorization'] = this.jwt
+            axios.put("/api/users/remove/friend", {
+                userId: this.userId,
+                friendId: this.$route.params.id
+            })
+            .then(res => {
+                if (res.status === 200) {
+                    alert(res.data.msg)
+                    this.friendStatus = false
+                } else {
+                    alert("There was a problem unfollowing this user. Please try again later.")
+                }
+            })
         },
+
         getPageInfo: function(state, route) {
             if (state.userId === route.params.id) {
                 let { username, picks, totalScore } = state
