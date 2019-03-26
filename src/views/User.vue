@@ -2,7 +2,10 @@
     <div class="main-container">
         <div class="container" v-if="this.username">
             <div class="row">
-                <div class="col s12 m10 offset-m1">
+                <div class="col s12 m3 center">
+                    <img class="responsive-img circle avatar" :src="`../assets/CharacterImages/${this.avatar}.jpg`" alt="">
+                </div>
+                <div class="col s12 m9">
                     <h3>{{ this.username.toUpperCase() }}</h3>
                     <h6>Current Score: {{ this.totalScore }}</h6>
                     <br>
@@ -30,12 +33,11 @@
                         </div>
                     </div>
 
-                    <hr>
-
                 </div>
                 
                 <div class="row">
-                    <div class="col s12 m6 offset-m3">
+                    <div class="col s12 m6">
+                        <hr>
                         <table class="highlight striped">
 
                             <thead>
@@ -93,7 +95,8 @@ export default {
             username: null,
             totalScore: null,
             picks: null,
-            friendStatus: null
+            friendStatus: null,
+            avatar: "Unknown"
         }
     },
     computed: {
@@ -148,11 +151,12 @@ export default {
 
         getPageInfo: function(state, route) {
             if (state.userId === route.params.id) {
-                let { username, picks, totalScore } = state
+                let { username, picks, totalScore, avatar } = state
 
                 this.username = username
                 this.totalScore = totalScore
                 this.picks = picks
+                this.avatar = avatar
                 
             } else {
                 axios.defaults.headers.common['Authorization'] = state.jwt
@@ -161,6 +165,9 @@ export default {
                     this.username = res.data.username
                     this.totalScore = res.data.totalScore
                     this.picks = res.data.picks
+                    if (res.data.avatar) {
+                        this.avatar = res.data.avatar
+                    }
                 })
             } 
         }
@@ -185,5 +192,9 @@ export default {
 <style scoped>
     .btn {
         width: 100%;
+    }
+    .avatar {
+        margin-top: 1.94667rem;
+        max-width: 175px;
     }
 </style>
