@@ -18,6 +18,7 @@ router.post('/register', (req, res) => {
         let newUser = new User({
             username: req.body.username,
             password: req.body.password,
+            avatar: req.body.selectedAvatar
         });
 
         newUser.save(err => {
@@ -61,6 +62,7 @@ router.post('/login', (req, res) => {
                             totalScore: user.totalScore,
                             picksLocked: user.picksLocked,
                             picks: user.picks,
+                            avatar: user.avatar,
                             friends: user.friends
                         });
                     } else {
