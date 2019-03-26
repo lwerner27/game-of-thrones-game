@@ -29,6 +29,10 @@ const UserSchema = new Schema({
         required: true,
         default: basePicks
     },
+    avatar: {
+        type: String,
+        default: "Unknown"
+    },
     friends: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 });
 
