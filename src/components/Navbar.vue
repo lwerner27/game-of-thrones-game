@@ -2,7 +2,7 @@
     <div class="navbar-fixed">
         <nav class="nav-extended grey darken-4">
             <div class="nav-wrapper container">
-                <a class="hide-on-small-only brand-logo">THE GAME OF GAME OF THRONES</a>
+                <a class="hide-on-small-only brand-logo">THE GAME OF G.O.T.</a>
                 <a class="show-on-small hide-on-med-and-up brand-logo center">T.G.O.G.O.T.</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
