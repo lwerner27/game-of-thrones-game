@@ -77,9 +77,9 @@ export default {
     },
     methods: {
         onSubmit: function() {
-            let { username, password, confirmPassword } = this
+            let { username, password, confirmPassword, selectedAvatar } = this
             if (password === confirmPassword) {
-                axios.post('/auth/register', { username, password })
+                axios.post('/auth/register', { username, password, selectedAvatar })
                 .then(res => {
                     if (res.data.success) {
                         alert("You account has been created.")
