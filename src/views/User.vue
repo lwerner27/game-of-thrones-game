@@ -36,9 +36,9 @@
                 </div>
                 
                 <div class="row">
-                    <div class="col s12 m6">
+                    <div class="col s12 m6 l6 offset-m3 ">
                         <hr>
-                        <table class="highlight striped">
+                        <table class="striped">
 
                             <thead>
                                 <tr>
@@ -195,6 +195,6 @@ export default {
     }
     .avatar {
         margin-top: 1.94667rem;
-        max-width: 175px;
+        max-height: 175px;
     }
 </style>
