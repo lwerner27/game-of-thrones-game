@@ -21,7 +21,7 @@ module.exports = {
     },
 
     getBasicUserData: function(req, res) {
-        db.User.findById(req.params.userId, "username picks totalScore")
+        db.User.findById(req.params.userId, "username picks totalScore avatar")
         .then(dbModel => {
             res.json(dbModel)
         })
