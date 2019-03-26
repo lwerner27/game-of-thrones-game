@@ -11,6 +11,7 @@ export default new Vuex.Store({
     picksLocked: false,
     totalScore: 0,
     picks: null,
+    avatar: null,
     friends: []
   },
   mutations: {
@@ -21,6 +22,7 @@ export default new Vuex.Store({
       state.picksLocked = userObj.picksLocked
       state.totalScore = userObj.totalScore
       state.picks = userObj.picks
+      state.avatar = userObj.avatar
       state.friends = userObj.friends
     },
     ADD_FRIEND: function(state, userId) {
