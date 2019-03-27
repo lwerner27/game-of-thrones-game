@@ -2,21 +2,22 @@
     <div class="main-container">
         <div class="container" v-if="this.username">
             <div class="row">
-                <div class="col s12 m3 center">
+                <div class="col s6 m6 avatar-col">
                     <img class="responsive-img circle avatar" :src="`../assets/CharacterImages/${this.avatar}.jpg`" alt="">
+                    <router-link tag="div" to="/avatar" class="btn grey darken-4" v-if="this.$route.params.id === this.$store.state.userId">update avatar</router-link>
                 </div>
-                <div class="col s12 m9">
-                    <h3>{{ this.username.toUpperCase() }}</h3>
-                    <h6>Current Score: {{ this.totalScore }}</h6>
+                <div class="col s6 m6 right">
+                    <h3 class="right-align flow-text"><strong>{{ this.username.toUpperCase() }}</strong></h3>
+                    <h6 class="right-align flow-text">Current Score: {{ this.totalScore }}</h6>
                     <br>
                     <div class="row">
-                        <div class="col s12 m3">
+                        <div class="col s12 m9 l6 right">
                             <!-- Conditional Button if viewing logged in users pages. -->
                             <router-link 
                                 tag="button" 
                                 to="/makepicks" 
                                 v-if="this.$route.params.id === this.$store.state.userId"
-                                class="btn grey darken-4"
+                                class="btn grey darken-4 dynamic-button"
                             >
                                 UPDATE PICKS
                             </router-link>
@@ -36,7 +37,7 @@
                 </div>
                 
                 <div class="row">
-                    <div class="col s12 m6 l6 offset-m3 ">
+                    <div class="col s12">
                         <hr>
                         <table class="striped">
 
@@ -193,8 +194,14 @@ export default {
     .btn {
         width: 100%;
     }
+
+    .dynamic-btn {
+        width: 100%;
+    }
     .avatar {
         margin-top: 1.94667rem;
-        max-height: 175px;
+    }
+    .avatar-col {
+        max-width: 175px;
     }
 </style>
