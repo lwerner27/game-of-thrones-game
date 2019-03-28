@@ -1,86 +1,45 @@
 <template>
     <div class="main-container">
         <div class="container" v-if="this.username">
+            <!-- Row #1 -->
+            <div class="row-flex">
+
+                <!-- Column #1 -->
+                <div class="avatar-col col-flex">
+                    <img class="responsive-img circle avatar" :src="`../assets/CharacterImages/${this.avatar}.jpg`"
+                        alt="">
+                    <router-link tag="div" to="/avatar" class="btn grey darken-4"
+                        v-if="this.$route.params.id === this.$store.state.userId">update avatar</router-link>
+                </div>
+
+                <!-- Column #2 -->
+                <div class="col-flex bottom">
+                    <p class="text-right flow-text"><strong>{{ this.username.toUpperCase() }}</strong></p>
+                    <p class="text-right flow-text">Current Score: {{ this.totalScore }}</p>
+
+                    <!-- Conditional Button if viewing logged in users pages. -->
+                    <router-link tag="button" to="/makepicks" v-if="this.$route.params.id === this.$store.state.userId"
+                        class="btn grey darken-4 dynamic-button">
+                        UPDATE PICKS
+                    </router-link>
+                    <!-- Conditional button if viewing friends page. -->
+                    <div v-else-if="this.friendStatus" @click="removeFriend" class="btn grey darken-4">
+                        Remove Friend
+                    </div>
+
+                    <!-- Conditional button if viewing non-friends page. -->
+                    <button v-else class="btn grey darken-4" @click.stop.prevent="addFriend">Add Friend</button>
+                </div>
+
+            </div> 
+
+            <br>
+            <hr>
+            <br>
+
             <div class="row">
-                <div class="col s6 m6 avatar-col">
-                    <img class="responsive-img circle avatar" :src="`../assets/CharacterImages/${this.avatar}.jpg`" alt="">
-                    <router-link tag="div" to="/avatar" class="btn grey darken-4" v-if="this.$route.params.id === this.$store.state.userId">update avatar</router-link>
-                </div>
-                <div class="col s6 m6 right">
-                    <h3 class="right-align flow-text"><strong>{{ this.username.toUpperCase() }}</strong></h3>
-                    <h6 class="right-align flow-text">Current Score: {{ this.totalScore }}</h6>
-                    <br>
-                    <div class="row">
-                        <div class="col s12 m9 l6 right">
-                            <!-- Conditional Button if viewing logged in users pages. -->
-                            <router-link 
-                                tag="button" 
-                                to="/makepicks" 
-                                v-if="this.$route.params.id === this.$store.state.userId"
-                                class="btn grey darken-4 dynamic-button"
-                            >
-                                UPDATE PICKS
-                            </router-link>
-                            <!-- Conditional button if viewing friends page. -->
-                            <button 
-                                v-else-if="this.friendStatus" 
-                                @click="removeFriend" 
-                                class="btn grey darken-4"
-                            >
-                                Remove Friend
-                            </button>
-                            <!-- Conditional button if viewing non-friends page. -->
-                            <button v-else class="btn grey darken-4" @click.stop.prevent="addFriend">Add Friend</button>
-                        </div>
-                    </div>
-
-                </div>
-                
-                <div class="row">
-                    <div class="col s12">
-                        <hr>
-                        <table class="striped">
-
-                            <thead>
-                                <tr>
-                                    <th>Name/Question</th>
-                                    <th>Selected Status/Answer</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr v-for="(pick, key) in picks.characterPicks" v-bind:key="key">
-                                    <td><strong>{{ pick.name }}</strong></td>
-                                    <td> {{ pick.status }} </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong>Is Danaerys pregnant:</strong>
-                                    </td>
-                                    <td>
-                                        {{ this.picks.bonusQuestions.isDannyPrego }}
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td>
-                                        <strong>Who kills the Night King:</strong>
-                                    </td>
-                                    <td>
-                                        {{ this.picks.bonusQuestions.nightKingKiller }}
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td>
-                                        <strong>Who holds the iron throne:</strong>
-                                    </td>
-                                    <td>
-                                        {{ this.picks.bonusQuestions.ironThroneSitter }}
-                                    </td>
-                                </tr>
-                            </tbody>
-
-                        </table>
-                    </div>
+                <div class="col s12">
+                    <view-table :picks="this.picks"></view-table>
                 </div>
             </div>
         </div>
@@ -90,6 +49,7 @@
 <script>
 import axios from 'axios'
 import { mapState, mapMutations } from 'vuex';
+import ViewTable from '../components/ViewTable'
 export default {
     data: function() {
         return {
@@ -99,6 +59,9 @@ export default {
             friendStatus: null,
             avatar: "Unknown"
         }
+    },
+    components: {
+        ViewTable
     },
     computed: {
         ...mapState([
@@ -191,17 +154,53 @@ export default {
 </script>
 
 <style scoped>
+    p {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
     .btn {
         width: 100%;
+    }
+
+    .avatar {
+        margin-bottom: 10px;
     }
 
     .dynamic-btn {
         width: 100%;
     }
-    .avatar {
-        margin-top: 1.94667rem;
-    }
+
     .avatar-col {
         max-width: 175px;
+    }
+
+    .row-flex {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .bottom {
+        justify-content: flex-end;
+    }
+
+    .col-flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .avatar-col {
+        max-width: 175px;
+    }
+
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-right {
+        text-align: right;
     }
 </style>
