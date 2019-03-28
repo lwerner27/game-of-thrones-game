@@ -8,7 +8,7 @@
                 <div class="avatar-col col-flex">
                     <img class="responsive-img circle avatar" :src="`../assets/CharacterImages/${this.avatar}.jpg`"
                         alt="">
-                    <router-link tag="div" to="/avatar" class="btn grey darken-4"
+                    <router-link tag="div" to="/avatar" class="btn grey darken-4 avatar-update"
                         v-if="this.$route.params.id === this.$store.state.userId">update avatar</router-link>
                 </div>
 
@@ -19,7 +19,7 @@
 
                     <!-- Conditional Button if viewing logged in users pages. -->
                     <router-link tag="button" to="/makepicks" v-if="this.$route.params.id === this.$store.state.userId"
-                        class="btn grey darken-4 dynamic-button">
+                        class="btn grey darken-4 dynamic-btn">
                         UPDATE PICKS
                     </router-link>
                     <!-- Conditional button if viewing friends page. -->
@@ -28,7 +28,7 @@
                     </div>
 
                     <!-- Conditional button if viewing non-friends page. -->
-                    <button v-else class="btn grey darken-4" @click.stop.prevent="addFriend">Add Friend</button>
+                    <button v-else class="btn grey darken-4 dynamic-btn" @click.stop.prevent="addFriend">Add Friend</button>
                 </div>
 
             </div> 
@@ -163,16 +163,16 @@ export default {
         width: 100%;
     }
 
-    .avatar {
-        margin-bottom: 10px;
-    }
-
     .dynamic-btn {
-        width: 100%;
+        margin-top: 10px;
     }
 
     .avatar-col {
         max-width: 175px;
+    }
+
+    .avatar-update {
+        margin-top: 10px;
     }
 
     .row-flex {
@@ -194,7 +194,6 @@ export default {
     .avatar-col {
         max-width: 175px;
     }
-
 
     .text-center {
         text-align: center;
