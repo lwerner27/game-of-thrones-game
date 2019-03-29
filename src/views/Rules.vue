@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="row" v-if="!this.jwt">
-                <div class="col s12 m8 offset-m2">
+                <div class="col s12">
                     <router-link tag="button" to="/" class="btn black">
                         Login
                     </router-link>
