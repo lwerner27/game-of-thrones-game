@@ -15,7 +15,7 @@
 
                 <div class="col s8 m6 offset-s2 avatar-col">
                     <img :src="`../assets/CharacterImages/${this.avatar}.jpg`" class="center responsive-img avatar" alt="">
-                    <div class="btn grey darken-4">
+                    <div class="btn grey darken-4" @click="attemptUpdateAvatar">
                         Save
                     </div>
                 </div>
@@ -32,12 +32,15 @@ import { mapState, mapMutations } from 'vuex';
 export default {
     computed: {
         ...mapState([
-            "avatar"
+            "avatar", 
+            "jwt",
+            "userId",
         ])
     },
     data: function() {
         return {
-            characters: characters
+            characters: characters,
+            prevAvatar: null,
         }
     },
     methods: {
@@ -45,7 +48,23 @@ export default {
             "UPDATE_AVATAR"
         ]),
         changeAvatar: function(event) {
+            this.prevAvatar = this.avatar
             this.UPDATE_AVATAR(event.target.dataset.value)
+        },
+        attemptUpdateAvatar: function() {
+            axios.defaults.headers.common['Authorization'] = this.jwt
+            axios.put("/api/users/update/avatar", {
+                userId: this.userId,
+                avatar: this.avatar
+            })
+            .then(res => {
+                if (res.status === 200) {
+                    alert(res.data.msg)
+                } else {
+                    this.UPDATE_AVATA(this.prevAvatar)
+                    alert("There was a problem updating your avatar please try again later.")
+                }
+            })
         }
     }
 }
