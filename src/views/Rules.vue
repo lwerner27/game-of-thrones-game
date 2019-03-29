@@ -2,13 +2,13 @@
     <div class="main-container">
         <div class="container">
             <div class="row">
-                <div class="col s12 m8 offset-m2">
+                <div class="col s12">
                     <h3>Rules of the Game</h3>
                     <hr>
                 </div>
             </div>
             <div class="row">
-                <div class="col s12 m8 offset-m2 flow-text">
+                <div class="col s12 flow-text">
                     <ol class="browser-default">
                         <li>
                             <strong>Earn Points By:</strong>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="row" v-if="this.jwt">
-                <div class="col s12 m8 offset-m2">
+                <div class="col s12">
                     <router-link tag="button" to="/makepicks" class="btn black">
                         Make Your Picks
                     </router-link>
@@ -57,11 +57,3 @@ export default {
     }
 }
 </script>
-
-
-<style scoped>
-    .main-container {
-        margin-top: 64px;
-    }
-</style>
-
