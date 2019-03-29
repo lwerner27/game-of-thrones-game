@@ -69,6 +69,16 @@ module.exports = {
             res.status(200).json({msg: "Removed from friends."})
         })
         .catch(err => res.status(422).json(err))
+    },
+
+    updateAvatar: function(req, res) {
+        db.User.findById(req.body.userId)
+        .then(dbModel => {
+            dbModel.avatar = req.body.avatar
+            dbModel.save()
+            res.status(200).json({ msg: "Your avatar has been updated." })
+        })
+        .catch(err => res.status(422).json(err))
     }
     
 }
