@@ -30,7 +30,10 @@ export default new Vuex.Store({
     },
     REMOVE_FRIEND: function(state, userId) {
       state.friends.splice(state.friends.indexOf(userId), 1)
-    }
+    },
+    UPDATE_AVATAR: function(state, newAvatar) {
+      state.avatar = newAvatar;
+    } 
   },
   actions: {
 
