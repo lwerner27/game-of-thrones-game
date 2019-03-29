@@ -7,6 +7,7 @@ import Register from './views/Register'
 import MakePicks from './views/MakePicks'
 import Search from "./views/Search"
 import BrowseUsers from './views/BrowseUsers'
+import UpdateAvatar from './views/UpdateAvatar'
 import Store from './store'
 
 Vue.use(Router)
@@ -63,6 +64,11 @@ export default new Router({
       path: "/users/browse",
       name: "Browse Users",
       component: BrowseUsers
+    },
+    {
+      path: "/update/avatar",
+      name: "Update Avatar",
+      component: UpdateAvatar
     }
   ]
 })
