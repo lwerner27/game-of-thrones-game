@@ -8,7 +8,7 @@
                 <div class="avatar-col col-flex">
                     <img class="responsive-img circle avatar" :src="`../assets/CharacterImages/${this.avatar}.jpg`"
                         alt="">
-                    <router-link tag="div" to="/avatar" class="btn grey darken-4 avatar-update"
+                    <router-link tag="div" to="/update/avatar" class="btn grey darken-4 avatar-update"
                         v-if="this.$route.params.id === this.$store.state.userId">update avatar</router-link>
                 </div>
 
